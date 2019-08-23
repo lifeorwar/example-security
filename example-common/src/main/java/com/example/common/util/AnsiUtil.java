@@ -5,7 +5,7 @@ import org.fusesource.jansi.Ansi;
 import org.springframework.core.env.Environment;
 
 /**
- * 字符代码配置工具
+ * 控制台输出样式工具
  *
  * @author yuanzili/lifeorwar@gmail.com
  * @version V1.0.0

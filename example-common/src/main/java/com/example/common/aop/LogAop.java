@@ -124,7 +124,7 @@ public class LogAop {
             } catch (Exception e) {
 
             }
-            log.info(AnsiUtil.getAnsi(Ansi.Color.GREEN, "requestInfo:" + requestInfo));
+            log.info(AnsiUtil.getAnsi(Ansi.Color.GREEN, "RequestInfo:" + requestInfo));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -137,7 +137,7 @@ public class LogAop {
             if (result != null && result instanceof ApiResult) {
                 ApiResult apiResult = (ApiResult) result;
                 int code = apiResult.getCode();
-                String responseResultInfo = "responseResult:";
+                String responseResultInfo = "ResponseResult:";
                 if (responseLogFormat) {
                     responseResultInfo += "\n" + JSON.toJSONString(apiResult, true);
                 } else {
@@ -160,11 +160,11 @@ public class LogAop {
     /**
      * 获取请求参数JSON字符串
      *
-     * @param joinPoint
-     * @param request
-     * @param requestMethod
-     * @param contentType
-     * @param isRequestBody
+     * @param joinPoint         切点
+     * @param request           请求
+     * @param requestMethod     请求方法
+     * @param contentType       请求类型
+     * @param isRequestBody     是否JSON
      */
     private Object getRequestParamJsonString(ProceedingJoinPoint joinPoint, HttpServletRequest request, String requestMethod, String contentType, boolean isRequestBody) {
         /**

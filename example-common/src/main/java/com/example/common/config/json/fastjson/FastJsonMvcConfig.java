@@ -16,8 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author geekidea
- * @date 2018-11-08
+ * FastJsonConfig
+ *
+ * @author yuanzili/lifeorwar@gmail.com
+ * @version V1.0.0
+ * @date 2019/8/23 9:44
  */
 @Configuration
 public class FastJsonMvcConfig implements WebMvcConfigurer {

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.system.mapper.DeptMapper">
+  <resultMap id="BaseResultMap" type="com.example.system.domain.Dept">
+    <!--@mbg.generated-->
+    <id column="DEPT_ID" jdbcType="BIGINT" property="deptId" />
+    <result column="PARENT_ID" jdbcType="BIGINT" property="parentId" />
+    <result column="DEPT_NAME" jdbcType="VARCHAR" property="deptName" />
+    <result column="ORDER_NUM" jdbcType="BIGINT" property="orderNum" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME
+  </sql>
+</mapper>

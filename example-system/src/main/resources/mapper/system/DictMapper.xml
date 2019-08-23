@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.system.mapper.DictMapper">
+  <resultMap id="BaseResultMap" type="com.example.system.domain.Dict">
+    <!--@mbg.generated-->
+    <id column="DICT_ID" jdbcType="BIGINT" property="dictId" />
+    <result column="KEYY" jdbcType="BIGINT" property="keyy" />
+    <result column="VALUEE" jdbcType="VARCHAR" property="valuee" />
+    <result column="FIELD_NAME" jdbcType="VARCHAR" property="fieldName" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    DICT_ID, KEYY, VALUEE, FIELD_NAME, `TABLE_NAME`
+  </sql>
+</mapper>

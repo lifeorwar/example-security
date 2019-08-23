@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.system.mapper.UserConnectionMapper">
+  <resultMap id="BaseResultMap" type="com.example.system.domain.UserConnection">
+    <!--@mbg.generated-->
+    <id column="userId" jdbcType="VARCHAR" property="userid" />
+    <id column="providerId" jdbcType="VARCHAR" property="providerid" />
+    <id column="providerUserId" jdbcType="VARCHAR" property="provideruserid" />
+    <result column="rank" jdbcType="INTEGER" property="rank" />
+    <result column="displayName" jdbcType="VARCHAR" property="displayname" />
+    <result column="profileUrl" jdbcType="VARCHAR" property="profileurl" />
+    <result column="imageUrl" jdbcType="VARCHAR" property="imageurl" />
+    <result column="accessToken" jdbcType="VARCHAR" property="accesstoken" />
+    <result column="secret" jdbcType="VARCHAR" property="secret" />
+    <result column="refreshToken" jdbcType="VARCHAR" property="refreshtoken" />
+    <result column="expireTime" jdbcType="BIGINT" property="expiretime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    userId, providerId, providerUserId, `rank`, displayName, profileUrl, imageUrl, accessToken, 
+    secret, refreshToken, expireTime
+  </sql>
+</mapper>

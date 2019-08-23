@@ -1,4 +1,4 @@
-package com.example.web.controller;
+package com.example.web.controller.test;
 
 import com.example.common.api.ApiResult;
 

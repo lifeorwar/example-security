@@ -1,19 +1,3 @@
-/**
- * Copyright 2019-2029 geekidea(https://github.com/geekidea)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.common.aop;
 
 import cn.hutool.core.date.DateUtil;
@@ -43,13 +27,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * <p>
- * Controller Aop
- * 获取响应结果信息
- * </p>
+ * 日志输出请求响应信息
  *
- * @author geekidea
- * @date 2018-11-08
+ * @author yuanzili/lifeorwar@gmail.com
+ * @version V1.0.0
+ * @date 2019/8/23 10:00
  */
 @Data
 @Slf4j
@@ -59,7 +41,7 @@ public class LogAop {
     /**
      * 切点
      */
-    private static final String POINTCUT = "execution(public * io.geekidea.springbootplus.*.web.controller..*.*(..))";
+    private static final String POINTCUT = "execution(public * com.example.*.controller.*..*.*(..))";
     /**
      * 默认的请求内容类型,表单提交
      **/
@@ -96,8 +78,7 @@ public class LogAop {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = attributes.getRequest();
 
-
-            Map<String,Object> map = new LinkedHashMap<>();
+            Map<String, Object> map = new LinkedHashMap<>();
 
             // 获取请求类名和方法名称
             Signature signature = joinPoint.getSignature();
@@ -108,74 +89,72 @@ public class LogAop {
 
             // 请求全路径
             String url = request.getRequestURI();
-            map.put("path",url);
+            map.put("path", url);
             // IP地址
             String ip = IpUtil.getRequestIp();
-            map.put("ip",ip);
+            map.put("ip", ip);
 
             // 获取请求方式
             String requestMethod = request.getMethod();
-            map.put("requestMethod",requestMethod);
+            map.put("requestMethod", requestMethod);
 
             // 获取请求内容类型
             String contentType = request.getContentType();
-            map.put("contentType",contentType);
+            map.put("contentType", contentType);
 
             // 判断控制器方法参数中是否有RequestBody注解
             Annotation[][] annotations = method.getParameterAnnotations();
             boolean isRequestBody = isRequestBody(annotations);
-            map.put("isRequestBody",isRequestBody);
+            map.put("isRequestBody", isRequestBody);
             // 设置请求参数
             Object requestParamJson = getRequestParamJsonString(joinPoint, request, requestMethod, contentType, isRequestBody);
-            map.put("param",requestParamJson);
-            // map.put("time", DateUtil.getYYYYMMDDHHMMSS(new Date()));
+            map.put("param", requestParamJson);
+            map.put("time", DateUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss"));
 
             // 获取请求头token
-            map.put("x-auth-token",request.getHeader("x-auth-token"));
+            map.put("x-auth-token", request.getHeader("x-auth-token"));
 
             String requestInfo = null;
             try {
-                if (requestLogFormat){
-                    requestInfo = "\n" + JSON.toJSONString(map,true);
-                }else{
+                if (requestLogFormat) {
+                    requestInfo = "\n" + JSON.toJSONString(map, true);
+                } else {
                     requestInfo = JSON.toJSONString(map);
                 }
             } catch (Exception e) {
 
             }
-            log.info(AnsiUtil.getAnsi(Ansi.Color.GREEN,"requestInfo:" + requestInfo));
+            log.info(AnsiUtil.getAnsi(Ansi.Color.GREEN, "requestInfo:" + requestInfo));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
         // 执行目标方法,获得返回值
         Object result = joinPoint.proceed();
-        try{
-            if (result != null && result instanceof ApiResult){
+        try {
+            if (result != null && result instanceof ApiResult) {
                 ApiResult apiResult = (ApiResult) result;
                 int code = apiResult.getCode();
                 String responseResultInfo = "responseResult:";
-                if (responseLogFormat){
-                    responseResultInfo += "\n" + JSON.toJSONString(apiResult,true);
-                }else{
+                if (responseLogFormat) {
+                    responseResultInfo += "\n" + JSON.toJSONString(apiResult, true);
+                } else {
                     responseResultInfo += JSON.toJSONString(apiResult);
                 }
-                if (code == ApiCode.SUCCESS.getCode()){
-                    log.info(AnsiUtil.getAnsi(Ansi.Color.BLUE,responseResultInfo));
-                }else{
-                    log.error(AnsiUtil.getAnsi(Ansi.Color.RED,responseResultInfo));
+                if (code == ApiCode.SUCCESS.getCode()) {
+                    log.info(AnsiUtil.getAnsi(Ansi.Color.BLUE, responseResultInfo));
+                } else {
+                    log.error(AnsiUtil.getAnsi(Ansi.Color.RED, responseResultInfo));
                 }
 
             }
-        }catch (Exception e){
-            log.error("处理响应结果异常",e);
+        } catch (Exception e) {
+            log.error("处理响应结果异常", e);
         }
         return result;
     }
-
 
 
     /**

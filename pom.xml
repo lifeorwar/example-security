@@ -48,7 +48,7 @@
         <commons-net.version>3.6</commons-net.version>
         <commons-pool2.version>2.6.2</commons-pool2.version>
 
-        <mysql.version>8.0.15</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <druid.version>1.1.17</druid.version>
         <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <lombok.version>1.18.8</lombok.version>

@@ -50,7 +50,7 @@
 
         <mysql.version>8.0.15</mysql.version>
         <druid.version>1.1.17</druid.version>
-        <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.0.20.Final</hibernate-validator.version>
         <lombok.version>1.18.8</lombok.version>
         <jwt.version>0.9.1</jwt.version>
         <jansi.version>1.18</jansi.version>

@@ -45,7 +45,7 @@
         <commons-io.version>2.6</commons-io.version>
         <commons-collections.version>3.2.1</commons-collections.version>
         <commons-codec.version>1.12</commons-codec.version>
-        <commons-net.version>3.6</commons-net.version>
+        <commons-net.version>3.9.0</commons-net.version>
         <commons-pool2.version>2.6.2</commons-pool2.version>
 
         <mysql.version>8.0.15</mysql.version>
